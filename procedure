@@ -49,4 +49,14 @@ NOW, steps to starting working with the git file:
 Now, Important point to focus:
 we get an "appspot.com" URL to connect us through to the application that we're running in CS.
 IT'S Registrant Organization: Google LLC
-AppSpot is an app launcher that is an app.
+AppSpot is an app launcher.
+
+
+"node [file_name.js]" -> to run the file
+Can edit the content on the .js file either
+ (1) in shell or
+ (2) on the cloud editor.
+"ctrl+c" -> to stop the server running for the port 8080 by "node [file_name.js]"
+"nodemon [file_name.js]" -> to run and load the changes in the source file into the node. it's a tool that comes pre-installed in the CS.
+
+
