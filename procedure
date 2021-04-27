@@ -1,0 +1,43 @@
+click to Activate google cloud shell on top right corner
+click to "Continue"
+Then apears the Shell Terminal with "Welcome to Cloud Shell!" message.
+There is 2 information given on this page:
+(a) the project id i.e., IT AUTOMATICALLY CONNECTS TO YOUR CURRENT PROJECT
+(b) the "gcloud config set project [PROJECT_ID]" to change to a different project
+
+GITHUB CMD COMMANDS:
+1.	echo "# Google-Cloud-Platform" >> README.md
+2.	git init
+3.	git add README.md
+4.	git commit -m "first commit"
+5.	git branch -M main
+6.	git remote add origin https://github.com/singhritesh750/Google-Cloud-Platform.git
+7.	git push -u origin main
+
+Back to GCS terminal->
+"gcloud help" to get hep
+"gcloud version" to get version
+Afterall its a normal linux machine so all the commands working there will also work here as well
+"pwd" -> check the present directory 
+ls -l -> to check the directory
+cat R[tab button] -> to read the file inside the directory
+ 
+** [first name of the file ][tab button] -> Auto completes the name of the file that FIRST APPEARS WITH THE ALPHABET
+ 
+* Few informations to notice in the above command return:
+ (a) VM is ephemeral -> it is temporary so anything that you want to be saved, should be saved
+ (b) home directory will persist accross sessions -> so everything should be saved here
+ (c) "dl [file_name]" -> to download the file
+ 
+ 
+NOW, steps to starting working with the git file:
+"git clone [full_https_link]" -> to get the lab files from the git
+"ls -l" -> SEE IT CREATES A NEW DIRECTORY FOR US
+"cd gcp-cloud-engineer["/" -> optional]" -> Let's navigate into that directory.
+"cd Cloud-shell-Hello["/" -> optional]" -> Now inside there there's another folder.
+
+
+* This directory has a couple of source files for no JSA applications.
+  "node Hello.js" -> runnig it tells us that it's running an application on its local hosts address on Port 8080
+
+** BUT if we try navigating to that address we'll see that it doesn't work because the local host for this browser is different than the local host for the cloud shell
