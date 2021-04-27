@@ -41,18 +41,12 @@ NOW, steps to starting working with the git file:
 * This directory has a couple of source files for no JSA applications.
   "node Hello.js" -> runnig it tells us that it's running an application on its local hosts address on Port 8080
 
-** BUT if we try navigating to that address we'll see that it doesn't work because the local host for this browser is different than the local host for the cloud shell
+** BUT if we try navigating to that address from browser then we'll see that it doesn't work because the local host for this browser is different than one for CS(Web Preview)
+
+"Web preview" -> URL to connect us through to the application
 
 
 Now, Important point to focus:
 we get an "appspot.com" URL to connect us through to the application that we're running in CS.
 IT'S Registrant Organization: Google LLC
 AppSpot is an app launcher that is an app.
-
-
-
-
-
-
-
-
