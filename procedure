@@ -60,3 +60,21 @@ Can edit the content on the .js file either
 "nodemon [file_name.js]" -> to run and load the changes in the source file into the node. it's a tool that comes pre-installed in the CS.
 
 
+Now, to update the Lab-file from the terminal using commands
+(1). git clone https://github.com/ACloudGuru/gcp-cloud-engineer.git
+(2). ls -l
+(3). cd gcp-cloud-engineer/
+(4). ls -l
+(5). (a) If update.sh is executable i.e., green in color, then -> cd update.sh
+     (b) if not then first make it executable -> chmod +x upudate.sh
+                                              -> cd update.sh
+Once above steps are done then from now on, just run the update script -> cd update.sh
+
+
+Using GC Storage:
+(1). first make the Bucket from the console with globally unique name
+(2). thne open the bucket and upload some files into it
+Clicking the files open them. URL of these files are long because they are signed and BY DEFAULT PRIVATELY ACCESSIBLE
+to make it publicly accessible : (1). far right corner click 3 dots
+                                  (2). open permissions then add user name it alluser and make it reader
+                                  
