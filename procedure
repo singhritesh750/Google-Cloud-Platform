@@ -1,6 +1,7 @@
 click to Activate google cloud shell on top right corner
 click to "Continue"
 Then apears the Shell Terminal with "Welcome to Cloud Shell!" message.
+
 There is 2 information given on this page:
 (a) the project id i.e., IT AUTOMATICALLY CONNECTS TO YOUR CURRENT PROJECT
 (b) the "gcloud config set project [PROJECT_ID]" to change to a different project
@@ -41,3 +42,17 @@ NOW, steps to starting working with the git file:
   "node Hello.js" -> runnig it tells us that it's running an application on its local hosts address on Port 8080
 
 ** BUT if we try navigating to that address we'll see that it doesn't work because the local host for this browser is different than the local host for the cloud shell
+
+
+Now, Important point to focus:
+we get an "appspot.com" URL to connect us through to the application that we're running in CS.
+IT'S Registrant Organization: Google LLC
+AppSpot is an app launcher that is an app.
+
+
+
+
+
+
+
+
