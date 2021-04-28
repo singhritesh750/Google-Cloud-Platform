@@ -78,3 +78,12 @@ Clicking the files open them. URL of these files are long because they are signe
 to make it publicly accessible : (1). far right corner click 3 dots
                                   (2). open permissions then add user name it alluser and make it reader
                                   
+
+GC storage store all sorts of objects but inside of a bucket (container). The location of a bucket cannot be changed after the bucket has been created
+
+Name for bucket MUST BE unique across cloud storage i.e., just like Project I.D. bucket names are globally unique. Now, The URL request for every file inside the bucket, to open, is very long because it's a signed request to be able to view this file. Every file is private. Not just anyone is allowed to view this file by default.
+"URL can end with either object or can be file".
+It does not have a hierarchical file system. Hierarchy can be created here if you want to, by giving each object a name that includes "/". And if you do that it'll act like folders.
+Every object whose name ends with a "/" is considered to be a folder and you can navigate into that folder and upload files there if you want.
+
+gsutil equivalent for rename files in bucket -> gsutil mv -p gs:// storage-lab-console/test/[file_name] git 
