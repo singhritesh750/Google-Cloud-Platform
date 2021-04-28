@@ -87,3 +87,48 @@ It does not have a hierarchical file system. Hierarchy can be created here if yo
 Every object whose name ends with a "/" is considered to be a folder and you can navigate into that folder and upload files there if you want.
 
 gsutil equivalent for rename files in bucket -> gsutil mv -p gs:// storage-lab-console/test/[file_name] git 
+
+GC storage store all sorts of objects but inside of a bucket (container).
+The location of a bucket cannot be changed after the bucket has been created
+Name for bucket MUST BE unique across cloud storage i.e., just like Project I.D. bucket names are globally unique.
+Now, The URL request for every file inside the bucket, to open, is very long because it's a signed request to be able to view this file. Every file is private. Not just anyone is allowed to view this file by default.
+"URL can end with either object or can be file".
+It does not have a hierarchical file system. Hierarchy can be created here if you want to, by giving each object a name that includes "/". And if you do that it'll act like folders.
+Every object whose name ends with a "/" is considered to be a folder and you can navigate into that folder and upload files there if you want.
+
+gsutil equivalent for rename files in bucket:
+gsutil mv -p gs:// storage-lab-console/test/[file_name] git
+
+Using "gsutil"- (Previously using the console web app)
+To verify that we're in the right project & account- gcloud config list
+
+gsutil - a command-line tool to connect to GC storage and it mimics many of the commands in a normal shell prompt. e.g., if we type gsutil ls it shows us the buckets.
+
+Note:
+the native GC storage addresses (bucket name) starts with gs:// similar to how Web addresses start with HTTP://
+
+gsutil ls gs://[bucket_name]/ -> to show the content of bucket (shows folder but not it's content)
+gsutil ls gs://[bucket_name]/** -> to list everything as a completely flat list (shows folder + it's content)
+gs mb --help -> this can give you a few pages of good information on how to make a bucket
+gsutil mb -l northamerica-northeast1 ["using gs://" bucket name] -> creates the bucket
+
+gcloud config list : shows which account is currently used and what is the current project.
+
+gsutil -> Is the command-line tool that can be used to connect to GC storage. It mimics many of the commands that are in the normal shell prompt.
+gsutil ls -> shows us the buckets present.
+
+NOTE: similar to how Web addresses start with https:// NATIVE GC STORAGE ADDRESSES STARTS WITH gs:// .
+
+gsutil ls gs://[tab button]/ -> auto-complete the rest of the bucket name. hit enter to see the objects that are uploaded in the console lab.
+
+NOTE: this actually shows the test folder and not the contents of the folder.
+
+gsutil ls gs://[tab button]/** -> to list everything.
+gsutil label get [gs://bucket_name]/ ->  reult is json document listing the labels of bucket.
+gsutil label get [gs://bucket_name]/ > [new_filename.json]
+
+">" symbol - run the thing before it and to put the output into the file with the name that comes after it.
+
+cat new_filename.json -> result is same json labels
+gsutil label get [gs://new_bucket_name]/ -> result is no label
+gsutil label set [new_filename.json] [gs://new_bucket_name]
