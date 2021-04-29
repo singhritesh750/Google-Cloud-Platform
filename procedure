@@ -79,28 +79,22 @@ to make it publicly accessible : (1). far right corner click 3 dots
                                   (2). open permissions then add user name it alluser and make it reader
                                   
 
-GC storage store all sorts of objects but inside of a bucket (container). The location of a bucket cannot be changed after the bucket has been created
+Bucket:
+(1). GC storage store all sorts of objects but inside of a bucket (container).
+(2). The location of a bucket cannot be changed after the bucket has been created
+(3). Permission granted to the bucket can be changed even after creating it.
+(4). Name for bucket MUST BE unique across cloud storage i.e., just like Project I.D. bucket names are globally unique.
 
-Name for bucket MUST BE unique across cloud storage i.e., just like Project I.D. bucket names are globally unique. Now, The URL request for every file inside the bucket, to open, is very long because it's a signed request to be able to view this file. Every file is private. Not just anyone is allowed to view this file by default.
-"URL can end with either object or can be file".
-It does not have a hierarchical file system. Hierarchy can be created here if you want to, by giving each object a name that includes "/". And if you do that it'll act like folders.
-Every object whose name ends with a "/" is considered to be a folder and you can navigate into that folder and upload files there if you want.
+NOTE: (1). The URL request for every file inside the bucket, to open, is very long because it's a signed request to be able to view this file.
+           Every file is private. Not just anyone is allowed to view this file by default.
+      (2). "URL can end with either object or can be folder".
+           It does not have a hierarchical file system. If neede, Hierarchy can be created by ending object name with "/". And then it'll act as folders.
+           Every object whose name ends with a "/", is considered to be a folder and you can navigate into that folder and upload files there if you want.
 
-gsutil equivalent for rename files in bucket -> gsutil mv -p gs:// storage-lab-console/test/[file_name] git 
-
-GC storage store all sorts of objects but inside of a bucket (container).
-The location of a bucket cannot be changed after the bucket has been created
-Name for bucket MUST BE unique across cloud storage i.e., just like Project I.D. bucket names are globally unique.
-Now, The URL request for every file inside the bucket, to open, is very long because it's a signed request to be able to view this file. Every file is private. Not just anyone is allowed to view this file by default.
-"URL can end with either object or can be file".
-It does not have a hierarchical file system. Hierarchy can be created here if you want to, by giving each object a name that includes "/". And if you do that it'll act like folders.
-Every object whose name ends with a "/" is considered to be a folder and you can navigate into that folder and upload files there if you want.
-
-gsutil equivalent for rename files in bucket:
-gsutil mv -p gs:// storage-lab-console/test/[file_name] git
+gsutil mv -p gs:// storage-lab-console/test/[file_name] git -> gsutil_equivalent for rename files in bucket
 
 Using "gsutil"- (Previously using the console web app)
-To verify that we're in the right project & account- gcloud config list
+gcloud config list -> To verify that we're in the right project & account
 
 gsutil - a command-line tool to connect to GC storage and it mimics many of the commands in a normal shell prompt. e.g., if we type gsutil ls it shows us the buckets.
 
@@ -108,9 +102,11 @@ Note:
 the native GC storage addresses (bucket name) starts with gs:// similar to how Web addresses start with HTTP://
 
 gsutil ls gs://[bucket_name]/ -> to show the content of bucket (shows folder but not it's content)
-gsutil ls gs://[bucket_name]/** -> to list everything as a completely flat list (shows folder + it's content)
+gsutil ls gs://[bucket_name]/** -> to list everything (shows folder + it's content)
 gs mb --help -> this can give you a few pages of good information on how to make a bucket
-gsutil mb -l northamerica-northeast1 ["using gs://" bucket name] -> creates the bucket
+gsutil mb -l [bucket_region]["using gs://" new_bucket_name] -> creates the new bucket
+
+NOTE: if "-l" is not mentioned then it will create the bucket in the us region by default.
 
 gcloud config list : shows which account is currently used and what is the current project.
 
@@ -119,7 +115,7 @@ gsutil ls -> shows us the buckets present.
 
 NOTE: similar to how Web addresses start with https:// NATIVE GC STORAGE ADDRESSES STARTS WITH gs:// .
 
-gsutil ls gs://[tab button]/ -> auto-complete the rest of the bucket name. hit enter to see the objects that are uploaded in the console lab.
+gsutil ls gs://[tab button]/ -> auto-complete the rest of the bucket name. Enter to see the objects that are uploaded in bucket.
 
 NOTE: this actually shows the test folder and not the contents of the folder.
 
