@@ -81,9 +81,11 @@ to make it publicly accessible : (1). far right corner click 3 dots
 
 Bucket:
 (1). GC storage store all sorts of objects but inside of a bucket (container).
-(2). The location of a bucket cannot be changed after the bucket has been created
-(3). Permission granted to the bucket can be changed even after creating it.
-(4). Name for bucket MUST BE unique across cloud storage i.e., just like Project I.D. bucket names are globally unique.
+(2). Name for bucket MUST BE unique across cloud storage i.e., just like Project I.D. bucket names are globally unique.
+(3). The location of a bucket cannot be changed after the bucket has been created.
+(4). The labels of bucket can be changed.
+(5). the default storage class can be changed for new objects that are put in this bucket.
+(6). Permission granted to the bucket can be changed even after creating it.
 
 NOTE: (1). The URL request for every file inside the bucket, to open, is very long because it's a signed request to be able to view this file.
            Every file is private. Not just anyone is allowed to view this file by default.
@@ -93,38 +95,37 @@ NOTE: (1). The URL request for every file inside the bucket, to open, is very lo
 
 gsutil mv -p gs:// storage-lab-console/test/[file_name] git -> gsutil_equivalent for rename files in bucket
 
-Using "gsutil"- (Previously using the console web app)
+gsutil:
+(1). Using "gsutil" (Previously using the console web app)
+(2). It's a command-line tool to connect to GC storage and it mimics many of the commands in a normal shell prompt. e.g., if we type "gsutil ls" it shows us the buckets.
+
 gcloud config list -> To verify that we're in the right project & account
 
-gsutil - a command-line tool to connect to GC storage and it mimics many of the commands in a normal shell prompt. e.g., if we type gsutil ls it shows us the buckets.
+NOTE: the native GC storage addresses (bucket name) starts with "gs://" similar to how Web addresses start with "HTTPS://"
 
-Note:
-the native GC storage addresses (bucket name) starts with gs:// similar to how Web addresses start with HTTP://
-
-gsutil ls gs://[bucket_name]/ -> to show the content of bucket (shows folder but not it's content)
+gsutil ls gs://[bucket_name]/ -> to show the content of bucket ( NOTE: This shows folder but not it's content)
 gsutil ls gs://[bucket_name]/** -> to list everything (shows folder + it's content)
 gs mb --help -> this can give you a few pages of good information on how to make a bucket
 gsutil mb -l [bucket_region]["using gs://" new_bucket_name] -> creates the new bucket
 
 NOTE: if "-l" is not mentioned then it will create the bucket in the us region by default.
 
-gcloud config list : shows which account is currently used and what is the current project.
+gsutil label get [gs://bucket_name]/ ->  reult is json document listing all the labels of this bucket.
+gsutil label get [gs://bucket_name]/ > [new_filename.json] -> send the json result of bucket_name to new_filename.json
 
-gsutil -> Is the command-line tool that can be used to connect to GC storage. It mimics many of the commands that are in the normal shell prompt.
-gsutil ls -> shows us the buckets present.
-
-NOTE: similar to how Web addresses start with https:// NATIVE GC STORAGE ADDRESSES STARTS WITH gs:// .
-
-gsutil ls gs://[tab button]/ -> auto-complete the rest of the bucket name. Enter to see the objects that are uploaded in bucket.
-
-NOTE: this actually shows the test folder and not the contents of the folder.
-
-gsutil ls gs://[tab button]/** -> to list everything.
-gsutil label get [gs://bucket_name]/ ->  reult is json document listing the labels of bucket.
-gsutil label get [gs://bucket_name]/ > [new_filename.json]
-
-">" symbol - run the thing before it and to put the output into the file with the name that comes after it.
+">" symbol - run the thing before it and put the output into the file with the name that comes after it.
 
 cat new_filename.json -> result is same json labels
 gsutil label get [gs://new_bucket_name]/ -> result is no label
-gsutil label set [new_filename.json] [gs://new_bucket_name]
+gsutil label set [new_filename.json] [gs://new_bucket_name] -> to set label to new_bucket_name
+
+To add more labels to a particular bucket (2 ways):
+(1). get a copy of the current labels, Edit The .json File locally, then set those labels back. (harder way)
+(2). gsutil label ch -l "extra-label":"extra value" bucket_name let us change the labels to add an extra-label and values. (smarter way)
+
+There are some things that can only be done through the command line like object versioning control. It can be done only programmatically whether that's through the
+(1). command line
+(2). an API call
+
+gsutill versioning get gs://[bucket name]/ -> to see whether versioning is turned on for a particular bucket.
+gsutill versioning set on gs://[bucket name]/ -> to change the versioning to "ON".
