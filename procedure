@@ -121,11 +121,32 @@ gsutil label set [new_filename.json] [gs://new_bucket_name] -> to set label to n
 
 To add more labels to a particular bucket (2 ways):
 (1). get a copy of the current labels, Edit The .json File locally, then set those labels back. (harder way)
-(2). gsutil label ch -l "extra-label":"extra value" bucket_name let us change the labels to add an extra-label and values. (smarter way)
+(2). gsutil label ch -l "extra-label":"extra value" bucket_name -> let us change the labels to add an extra-label and values. (smarter way)
 
-There are some things that can only be done through the command line like object versioning control. It can be done only programmatically whether that's through the
+*There are some things that can only be done through the command line like object versioning control. It can be done only programmatically whether that's through the
 (1). command line
 (2). an API call
 
-gsutill versioning get gs://[bucket name]/ -> to see whether versioning is turned on for a particular bucket.
-gsutill versioning set on gs://[bucket name]/ -> to change the versioning to "ON".
+gsutil versioning get gs://[bucket name]/ -> to see whether versioning is turned on for a particular bucket.
+gsutil versioning set on gs://[bucket name]/ -> to change the versioning to "ON".
+
+
+gsutil ls -a gs://[bucket_name]/ -> to include information about archived objects. Basically, it tells to show information about object versioning.
+
+NOTE: file that we uploaded includes a generation number.
+
+**NOTE: if we do something like remove this file, then running the normal list command will show us that it's gone but running the list -a command will show us that it's 
+still there. That's basically what object versioning does. It means that every time we give GC an object, it will hold on to it forever until we tell it quite specifically 
+that we want that object to be deleted. Giving it a new version of that object or just deleting it by name isn't enough.
+
+NOTE:
+(1). gsutil ls gs://[bucket_name]/ -> don't show the archived files. Similarly, in the console again we didn't see archived versions (by default).
+(2). when we copy objects from the other bucket we didn't copy their sharing settings. they were shared publicly in the console bucket but in new_bucket they're private 
+because that's how the command line bucket is setup.
+
+gsutil acl ch -u AllUsers:R gs://[object_name_path] -> to share an object (privately accessed)
+acl -> for access control list
+ch -> for change
+-u -> for user say all users : R for read access
+object_name_path -> the file_name that we want
+the object will now be available in the same way as the other publicly accessed object.
