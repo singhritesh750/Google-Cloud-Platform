@@ -150,3 +150,35 @@ ch -> for change
 -u -> for user say all users : R for read access
 object_name_path -> the file_name that we want
 the object will now be available in the same way as the other publicly accessed object.
+
+Start First GCE VM Launch in Cloud Compute Engine (Cloud Compute Engine Setup):
+First To check the right project is selected or not :
+(1). gcloud config get-value project -> and it shows us that we are indeed in the services exploration labs project.
+(2). can see the same thing up here in this cloud_shell tab label.
+(3). gcloud config list
+
+gcloud compute instances list -> to check that there aren't running VM in Google compute engine yet
+
+NOTE: If the result of this API call was "HTTPError 403" that means that we're not allowed to do that.
+
+*** The reason to go to the service accounts list before navigating to the compute engine section of the console is that to show that some service accounts are created 
+automatically after starting the Compute engine API.***
+
+gcloud services list -> this shows us many different services (by default shows the enabled ones).
+gcloud services list -h -> to get SMALL help about list 
+gcloud services list --enabled -> This list is the API is that are enabled for this specific project.
+
+NOTE: these APIs that we're looking at right now are enabled by default for all new projects & this is the same reason that we didn't have any trouble when we did the 
+GC storage.
+
+gcloud services list --available -> to show the available services
+gcloud services list --available | grep compute -> to pipe the output of that command indicated by this "|" to the command grep compute.
+pipe syntax "|" - takes the output of command on the left & passes it as input to one on the right
+grep - grep will only show lines that include the word compute.
+Here compute.googleapis.com is available. So to enable service :
+
+gcloud services -h -> to see what things we're allowed to do at this level (disable/enable/list)
+(1). gcloud services enable compute googleapis.com -> to enable the service
+(2). gcloud compute instances list -> say no to the prompt it gives us a URL that we can follow and enable the API.
+(3). go to the COMPUTE ENGINE section of the console - it enable the compute engine API automatically.
+(4). API & services section in the console - easy links to "Enable APIS & services".
