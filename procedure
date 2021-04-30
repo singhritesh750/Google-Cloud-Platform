@@ -182,3 +182,9 @@ gcloud services -h -> to see what things we're allowed to do at this level (disa
 (2). gcloud compute instances list -> say no to the prompt it gives us a URL that we can follow and enable the API.
 (3). go to the COMPUTE ENGINE section of the console - it enable the compute engine API automatically.
 (4). API & services section in the console - easy links to "Enable APIS & services".
+
+creating our very first virtual machine:
+gcloud compute instances create [machine_name] -> to launch VM.
+we didn't specify a zone so it suggests this one.
+Now this lab was really all about enabling the API eyes and getting the service configured.
+gcloud compute instances delete [machine_name] -> to delete VM.
