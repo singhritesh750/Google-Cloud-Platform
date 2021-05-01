@@ -188,3 +188,18 @@ gcloud compute instances create [machine_name] -> to launch VM.
 we didn't specify a zone so it suggests this one.
 Now this lab was really all about enabling the API eyes and getting the service configured.
 gcloud compute instances delete [machine_name] -> to delete VM.
+
+Changes as a result of navigation to the compute engine section:
+gcloud services list ->
+In APIs list:
+(1). compute.googleapis.com has now been enabled
+(2). oslogin.googleapis.com has also been enabled.
+In IAM section in the console
+We still have the owner_account that we had before but more accounts have been added automatically like:
+(1). compute engine default service account
+(2). Google APIs Service agent
+(3). Compute engine service agent
+three new identities each one identified by an email address that includes our project number.
+Now, it is possible to go and delete this auto-created service account.
+*** The reason to go to the service accounts list before navigating to the compute engine section of the console is that to show that some service accounts are created 
+automatically.***
